@@ -13,3 +13,10 @@
 ## Descripción
 
  * tabla de marca de vehículos y sus modelos
+
+ ### digrama de identidad
+![DRE] (/img/captura.jpg)
+
+
+### SQL
+[Script SQL](marcas.sql)
