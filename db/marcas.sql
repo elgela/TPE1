@@ -31,14 +31,14 @@ CREATE TABLE `marcas` (
   `id` int(11) NOT NULL,
   `marca` varchar(50) NOT NULL,
   `nacionalidad` varchar(50) NOT NULL,
-  `anio de creacion` int(11) NOT NULL
+  `anio_de_creacion` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `marcas`
 --
 
-INSERT INTO `marcas` (`id`, `marca`, `nacionalidad`, `anio de creacion`) VALUES
+INSERT INTO `marcas` (`id`, `marca`, `nacionalidad`, `anio_de_creacion`) VALUES
 (1, 'Ford', 'EE.UU', 1903);
 
 --
