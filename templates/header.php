@@ -22,7 +22,7 @@
                 <li><a href="modelos">Modelos</a></li>
             </ul>
         </nav>
-        <!-- <button type="submit">Buscar</button><input type="text" name="buscar" id="" placeholder="Ingrese marca a buscar..."> -->
+        <button type="submit">Buscar</button><input type="text" name="buscar" id="" placeholder="Ingrese marca a buscar...">
 
     </header>
 <!-- </body>
