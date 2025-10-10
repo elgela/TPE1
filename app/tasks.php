@@ -17,7 +17,7 @@ function removeBrand($id) {
 
 function sellCar($id) {
   updateCar($id);
-  header('Location: ' . BASE_URL);
+  header("Location: " . BASE_URL . "modelos");
 }
 
 function showCarModel() {
