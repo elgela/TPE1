@@ -2,12 +2,12 @@
 require_once './app/db.php';
 
 function showCarBrands() {
-  require_once 'templates/header.php';
+  require_once 'templates/header.phtml';
 
   // obtengo las marcas
   $marcas = getCarBrands();
 
-  require_once 'templates/table_brands.php';
+  require_once 'templates/table_brands.phtml';
 }
 
 function removeBrand($id) {
@@ -21,25 +21,25 @@ function sellCar($id) {
 }
 
 function showCarModel() {
-  require_once 'templates/header.php';
+  require_once 'templates/header.phtml';
 
   // obtengo los modelos
   $modelos = getCarModel();
 
-  require_once 'templates/table_models.php';
-  require_once 'templates/footer.php';
+  require_once 'templates/table_models.phtml';
+  require_once 'templates/footer.phtml';
 }
 
 
 function showCarBrandById($id) {
-  require_once 'templates/header.php';
+  require_once 'templates/header.phtml';
   // obtengo modelos by id
   $marcas = getCarBrandById($id);
 
   // 3. Mostrar los datos obtenidos
   
-  require_once 'templates/table_brands.php';
-  require_once 'templates/footer.php';
+  require_once 'templates/table_brands.phtml';
+  require_once 'templates/footer.phtml';
 }
 
 function login() {
@@ -76,9 +76,9 @@ function register() {
 function showHome() {
 ?>
 <?php
-  require_once 'templates/header.php';
+  require_once 'templates/header.phtml';
   login();
   // showCarBrands();
   register();
-  require_once 'templates/footer.php';
+  require_once 'templates/footer.phtml';
 }
