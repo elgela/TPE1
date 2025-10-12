@@ -1,11 +1,4 @@
-
-    <footer>
-        <p>esto es el footer</p>
-        <div>
-            <h3 class="subtitulo_footer">dueños de la paguina</h3>
-            <p class="p_creadores"><a href=""></a>mariano nesci</p>
-            <p class="p_creadores"><a href=""></a>marcelo galato</p>
-        </div>
-    </footer>
-</body>
-</html>
+<footer>
+    <label class="footer">2025 - TPE1 - M&M - TUDAI</label>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</footer>
