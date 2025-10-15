@@ -37,7 +37,7 @@
                 </table>
             </form>
             <?php
-            require_once 'templates/footer.php';
+            require_once 'templates/footer.phtml';
         }
 
 
