@@ -1,16 +1,16 @@
 <!-- tabla de marca de autos -->
- <form class="marcas">
+<form class="marcas">
 
-     <h2>Marca</h2>
-     <h3>Seleccione la marca</h3>
-     <button type="submit" class="btn btn-info">Buscar</button><input type="text" name="buscar" id="" placeholder="Ingrese marca a buscar...">
-     <!-- <form action="ver" method='POST'> -->
-         <table class="brands">
-             <thead>
-                 <tr style='background-color: yellow;'>
-                     <th style='border: 1px solid black;padding:7px;'>Marca</th>
-                     <th style='border: 1px solid black;padding:7px;'>Nacionalidad</th>
-                     <th style='border: 1px solid black;padding:7px;'>Año de creación</th>
+    <h2>Marca</h2>
+    <h3>Seleccione la marca</h3>
+    <button type="submit" class="btn btn-info">Buscar</button><input type="text" name="buscar" id="" placeholder="Ingrese marca a buscar...">
+    <!-- <form action="ver" method='POST'> -->
+        <table class="brands">
+            <thead>
+                <tr style='background-color: yellow;'>
+                    <th style='border: 1px solid black;padding:7px;'>Marca</th>
+                    <th style='border: 1px solid black;padding:7px;'>Nacionalidad</th>
+                    <th style='border: 1px solid black;padding:7px;'>Año de creación</th>
                     </tr>
                 </thead>
                 <tbody>
