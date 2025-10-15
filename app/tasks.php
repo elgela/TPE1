@@ -1,47 +1,61 @@
 <?php
-require_once './app/db.php';
+// require_once './app/db.php';
 
-function showCarBrands() {
-  require_once 'templates/header.phtml';
+                // ya echo mvc (si)
+// function showCarBrands() {
+//   require_once 'templates/header.php';
 
-  // obtengo las marcas
-  $marcas = getCarBrands();
+//   // obtengo las marcas
+//   $marcas = getCarBrands();
 
-  require_once 'templates/table_brands.phtml';
-}
-
-function removeBrand($id) {
-  deleteBrand($id);
-  header('Location: ' . BASE_URL);
-};
-
-function sellCar($id) {
-  updateCar($id);
-  header("Location: " . BASE_URL . "modelos");
-}
-
-function showCarModel() {
-  require_once 'templates/header.phtml';
-
-  // obtengo los modelos
-  $modelos = getCarModel();
-
-  require_once 'templates/table_models.phtml';
-  require_once 'templates/footer.phtml';
-}
+//   require_once 'templates/table_brands.php';
+// }
 
 
-function showCarBrandById($id) {
-  require_once 'templates/header.phtml';
-  // obtengo modelos by id
-  $marcas = getCarBrandById($id);
+                // ya echo mvc (si)
+//marcas
+// function removeBrand($id) {
+//   deleteBrand($id);
+//   header('Location: ' . BASE_URL);
+// }
 
-  // 3. Mostrar los datos obtenidos
+
+        // ya echo mvc (si)
+// function sellCar($id) {
+//   updateCar($id);
+//   header("Location: " . BASE_URL . "modelos");
+// }
+
+
+            // ya echo mvc (si)
+// function showCarModel() {
+//   require_once 'templates/header.php';
+
+//   // obtengo los modelos
+//   $modelos = getCarModel();
+
+//   require_once 'templates/table_models.php';
+//   require_once 'templates/footer.php';
+// }
+
+
+                // ya echo mvc (si)
+// //marcas ++++
+// function showCarBrandById($id) {
+//   require_once 'templates/header.php';
+//   // obtengo modelos by id
+//   $marcas = getCarBrandById($id);
+
+//   // 3. Mostrar los datos obtenidos
   
-  require_once 'templates/table_brands.phtml';
-  require_once 'templates/footer.phtml';
-}
+//   require_once 'templates/table_brands.php';
+//   require_once 'templates/footer.php';
+// }
 
+
+
+
+////todavia no
 function login() {
 ?>
   <div>
