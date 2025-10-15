@@ -2,7 +2,7 @@
     class taskveiwV{
 
         function showTaksV($modelos) {
-            require_once 'templates/header.php';
+            require_once 'templates/header.phtml';
             ?>
             <form class="form-modelos">
                 <h2>Modelos</h2>
@@ -27,7 +27,7 @@
                 </div>
             </form>
             <?php
-            require_once 'templates/footer.php';
+            require_once 'templates/footer.phtml';
         }
 
         function showError($msj){

@@ -3,7 +3,7 @@
     class taskVeiw{
 
         function showTaks($marcas) {
-            require_once 'templates/header.php';
+            require_once 'templates/header.phtml';
             ?>
             <form class="marcas">
                 <h2>Marca</h2>
