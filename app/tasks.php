@@ -1,5 +1,5 @@
 <?php
-require_once './app/db.php';
+// require_once './app/db.php';
 
                 // ya echo mvc (si)
 // function showCarBrands() {
