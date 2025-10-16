@@ -1,5 +1,4 @@
 <?php
-    // require_once './app/db.php';
     require_once './app/tasks.php';
     require_once './app/controler/tasks.Controler.php';
     require_once './app/controler/tasks.ControlerV.php';
@@ -10,6 +9,7 @@ $action = 'home'; // acción por defecto
 if (!empty($_GET['action'])) {
     $action = $_GET['action'];
 }
+
 //se istancian los controlers
 $controler = new tasksControler();
 $controlerV = new tasksControlerV();
