@@ -20,7 +20,7 @@
                 <li><a href="home">Inicio</a></li>
                 <li><a href="marcas">Marcas</a></li>
                 <li><a href="modelos">Modelos</a></li>
-                <p>main</p>
+                <p>*Main*</p>
             </ul>
         </nav>
         <!-- <button type="submit">Buscar</button><input type="text" name="buscar" id="" placeholder="Ingrese marca a buscar..."> -->
