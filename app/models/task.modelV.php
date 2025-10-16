@@ -1,8 +1,9 @@
 <?php 
+    require_once 'app/confic/confic.php';
     class taskModelV{
 
         private function conectionDB() {
-            $db = new PDO('mysql:host=localhost;dbname=concesionaria;charset=utf8', 'root', '');
+            $db = new PDO("mysql:host=" . HOST .";dbname=" . DBNAME . ";charset=utf8",USER,PASS);
             return $db;
         }
 

@@ -1,16 +1,18 @@
 <?php
-    class taskModel{
 
-        //coneccion a la DB
-        private function conectionDB() {
-            $db = new PDO('mysql:host=localhost;dbname=concesionaria;charset=utf8', 'root', '');
+    require_once 'app/confic/confic.php';
+    class taskModel{
+        //coneccion a la D
+        private function conectionDB() {    
+            $db = new PDO("mysql:host=" . HOST .";dbname=" . DBNAME . ";charset=utf8",USER,PASS);
+
             return $db;
         }
 
         // Obtiene y devuelve la base de datos de las marcas
         function getCarBrands() {
             // 1. abro conexión con la DB
-            $db = $this-> conectionDB();
+            $db = $this->conectionDB();
 
             // 2. ejecuto la consulta SQL (SELECT * FROM marcas)
             $query = $db->prepare('SELECT * FROM marcas');
