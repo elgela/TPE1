@@ -44,7 +44,7 @@
             $this->veiw->noNewCars($modelos, $id);
         }
 
-        function newCar($id) {
+        function newCars($id) {
             // obtengo los modelos de vehiculos
             $modelos = $this->model->getCarModel();
 
