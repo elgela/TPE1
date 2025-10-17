@@ -26,17 +26,17 @@ class taskModelV {
         $query->execute([$id]);
     }
 //////////
-    function used($es_nuevo) {
-        $db = $this->conectionDB();
-        $query = $db->prepare('SELECT * FROM vehiculos WHERE es_nuevo = 0');
-        $query->execute([$es_nuevo]);
-    }
+    // function used($es_nuevo) {
+    //     $db = $this->conectionDB();
+    //     $query = $db->prepare('SELECT * FROM vehiculos WHERE es_nuevo = 0');
+    //     $query->execute([$es_nuevo]);
+    // }
 
-    function new($es_nuevo) {
-        $db = $this->conectionDB();
-        $query = $db->prepare('SELECT * FROM vehiculos WHERE es_nuevo = 1');
-        $query->execute([$es_nuevo]);
-    }
+    // function new($es_nuevo) {
+    //     $db = $this->conectionDB();
+    //     $query = $db->prepare('SELECT * FROM vehiculos WHERE es_nuevo = 1');
+    //     $query->execute([$es_nuevo]);
+    // }
 
     function insertCar($modelo, $anio, $km, $precio, $patente, $imagen) {
         $db = $this->conectionDB();
