@@ -35,8 +35,10 @@ switch ($params[0]) {
         $controler->showCarBrands();    
         break;
     case 'modelos':
-        $controlerV = new tasksControlerV();
         $controlerV->showCarModel();
+        break;
+    case 'agregar':
+        $controlerV->addCarModel();
         break;
     case 'ver':
         if (isset($params[1])) {
@@ -45,11 +47,20 @@ switch ($params[0]) {
             $controler->showCarBrands();  
         }
         break;
+        case 'detalles':
+        $controlerV->showCarDetails($params[1]);
+        break;
     case 'vendido':
         $controlerV->sellCar($params[1]);
         break;
     case 'eliminar':
         $controler-> removeBrand($params[1]);
+        break;
+    case 'usados':
+        $controlerV->usedCars($params[0]);
+        break;
+    case 'nuevos':
+        $controlerV->newCar($params[0]);
         break;
     default:
         header("HTTP/1.0 404 Not Found");
