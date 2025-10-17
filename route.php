@@ -60,7 +60,7 @@ switch ($params[0]) {
         $controlerV->usedCars($params[0]);
         break;
     case 'nuevos':
-        $controlerV->newCar($params[0]);
+        $controlerV->newCars($params[0]);
         break;
     default:
         header("HTTP/1.0 404 Not Found");
