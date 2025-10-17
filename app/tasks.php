@@ -93,6 +93,6 @@ function showHome() {
   require_once 'templates/header.phtml';
   login();
   // showCarBrands();
-  register();
+  // register();
   require_once 'templates/footer.phtml';
 }
