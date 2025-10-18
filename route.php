@@ -62,6 +62,9 @@ switch ($params[0]) {
     case 'nuevos':
         $controlerV->newCars($params[0]);
         break;
+    case 'quitar':
+        $controlerV->eraseCar($params[1]);
+        break;
     default:
         header("HTTP/1.0 404 Not Found");
         echo 'Error 404! Página no encontrada...';
