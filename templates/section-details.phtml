@@ -7,7 +7,9 @@
     <h2><?php echo '$ ' . number_format($modelo->precio, 0, ',', '.'); ?></h2>
     <?php if (!$modelo->vendido) { ?><a href="vendido/<?php echo $modelo->id ?>" type="button" name="comprar" class="btn btn-danger">Comprar</a> <?php }
     if ($modelo->vendido) {
-        echo '<h1>¡Vendido!</h1>';
+        ?><a href="quitar/<?php echo $modelo->id ?>" type="button" name="eliminar" class="btn btn-danger">Quitar</a> 
+        <h1>¡Vendido!</h1>
+    <?php
     } else {
     ?><a href="detalles/<?php echo $modelo->id ?>" type="button" name="detalles" class="btn btn-danger">Detalles</a>
     <?php } ?>
