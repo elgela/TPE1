@@ -22,25 +22,9 @@ class taskveiwV {
                 <!-- <button type="submit" class="btn btn-outline-info" name="agregar">Agregar vehículo</button> -->
             </div>
             <div class="modelos">
-                <?php foreach ($modelos as $modelo) { ?>
-                    <section>
-                        <h4><?php echo $modelo->modelo ?></h4>
-                        <a href="<?php echo $modelo->imagen ?>"><img src="<?php echo $modelo->imagen ?>" alt="imagen del modelo"></a>
-                        <h6><?php echo 'Modelo ' . $modelo->anio ?></h6>
-                        <!-- <h6><?php echo $modelo->patente ?></h6> -->
-                        <!-- <h5><?php echo number_format($modelo->km, 0, '.', '.') . ' km.' ?></h5> -->
-                        <h2><?php echo '$ ' . number_format($modelo->precio, 0, ',', '.'); ?></h2>
-                        <?php if (!$modelo->vendido) { ?><a href="vendido/<?php echo $modelo->id ?>" type="button" name="comprar" class="btn btn-danger">Comprar</a> <?php }
-                        if ($modelo->vendido) {
-                            ?><a href="quitar/<?php echo $modelo->id ?>" type="button" name="eliminar" class="btn btn-danger">Quitar</a> 
-                            <h1>¡Vendido!</h1>
-                        <?php
-                        } else {
-                        ?><a href="detalles/<?php echo $modelo->id ?>" type="button" name="detalles" class="btn btn-danger">Detalles</a>
-                        <?php } ?>
-                        <br>
-                    </section>
-                <?php } ?>
+                <?php foreach ($modelos as $modelo) { 
+                    include 'templates/section-details.phtml';
+                 } ?>
             </div>
         </form>
     <?php
