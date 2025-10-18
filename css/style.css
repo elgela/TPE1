@@ -94,6 +94,10 @@ body {
     font-family: fantasy;
 }
 
+.brands{
+    display: flex;
+}
+
 .footer {
     display: grid;
     text-align: center;

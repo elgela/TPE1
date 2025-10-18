@@ -26,6 +26,14 @@
             $this->model->updateCar($id);
             header("Location: " . BASE_URL . "modelos");
         }
+
+
+        function showCarBrandById($id) {
+            
+            $modelos = $this->model->getVehiculosByMarca($id);
+
+            $this->veiw->showModelosPorMarca($modelos);
+        }
     
     }
 

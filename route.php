@@ -35,15 +35,30 @@ switch ($params[0]) {
         $controler->showCarBrands();    
         break;
     case 'modelos':
-        $controlerV = new tasksControlerV();
         $controlerV->showCarModel();
         break;
+    case 'agregar':
+        $controler->insert();    
+        break;
+    case 'modificar':
+        if (isset($params[1])) {
+            $controler->edit($params[1]); // $params[1] = ID de la marca
+        } else {
+            $controler->showCarBrands(); // si no viene ID, volvemos al listado
+        }
+    break;
+    case 'actualizar':
+        $controler->update(); // update() recibe $_POST con id, marca, nacionalidad y anio
+    break;
     case 'ver':
         if (isset($params[1])) {
-            $controler->showCarBrandById($params[1]);
+            $controlerV->showCarBrandById($params[1]);
         } else {
-            $controler->showCarBrands();  
+            $controlerV->showCarModel(); 
         }
+        break;
+    case 'buscar':
+        $controler->buscar();
         break;
     case 'vendido':
         $controlerV->sellCar($params[1]);
