@@ -1,8 +1,7 @@
 <?php
 class taskveiwV {
 
-    function showTaksV($modelos)
-    {
+    function showTaksV($modelos) {
         require_once 'templates/header.phtml';
 ?>
         <form class="form-modelos">
@@ -19,7 +18,8 @@ class taskveiwV {
             </div>
             <br>
             <div>
-                <button type="submit" class="btn btn-outline-info" name="agregar">Agregar vehículo</button>
+                <a href="agregar"><input type="button" value="Agregar vehículo" class="btn btn-outline-info"></a>
+                <!-- <button type="submit" class="btn btn-outline-info" name="agregar">Agregar vehículo</button> -->
             </div>
             <div class="modelos">
                 <?php foreach ($modelos as $modelo) { ?>
@@ -32,7 +32,9 @@ class taskveiwV {
                         <h2><?php echo '$ ' . number_format($modelo->precio, 0, ',', '.'); ?></h2>
                         <?php if (!$modelo->vendido) { ?><a href="vendido/<?php echo $modelo->id ?>" type="button" name="comprar" class="btn btn-danger">Comprar</a> <?php }
                         if ($modelo->vendido) {
-                            echo '<h1>¡Vendido!</h1>';
+                            ?><a href="quitar/<?php echo $modelo->id ?>" type="button" name="eliminar" class="btn btn-danger">Quitar</a> 
+                            <h1>¡Vendido!</h1>
+                        <?php
                         } else {
                         ?><a href="detalles/<?php echo $modelo->id ?>" type="button" name="detalles" class="btn btn-danger">Detalles</a>
                         <?php } ?>
@@ -93,62 +95,18 @@ class taskveiwV {
                 <li><a href="usados">Usados</a></li>
             </ul>
         </nav>
-
-        <form action="/action_page.php">
-            <label for="cars">Marca:</label>
-            <select name="cars" id="cars" class="form-select" aria-label="Default select example">
-                <option value="">Seleccione una marca</option>
-                <optgroup label="EE.UU">
-                    <option value="ford">Ford</option>
-                    <option value="chevrolet">Chevrolet</option>
-                    <option value="jeep">Jeep</option>
-                </optgroup>
-                <optgroup label="Japón">
-                    <option value="toyota">Toyota</option>
-                    <option value="mitsubishi">Mitsubishi</option>
-                </optgroup>
-                <optgroup label="Francia">
-                    <option value="citroen">Citroën</option>
-                    <option value="renault">Renault</option>
-                    <option value="peugeot">Peugeot</option>
-                </optgroup>
-                <optgroup label="Alemania">
-                    <option value="volkswagen">Volkswagen</option>
-                    <option value="audi">Audi</option>
-                    <option value="bmw">BMW</option>
-                </optgroup>
-                <optgroup label="Italia">
-                    <option value="fiat">Fiat</option>
-                    <option value="alfa">Alfa Romeo</option>
-                </optgroup>
-            </select>
-            <br><br>
-            <input type="submit" value="Mostrar">
-        </form>
+        
+        <?php
+            require_once 'templates/form-marcas.phtml';
+        ?>
 
         <div class="usados">
             <?php
-
             // Muestro los modelos usados
             foreach ($modelos as $modelo) {
                 if ($modelo->es_nuevo === 0) {
                     // Muestro el modelo
-            ?>
-                    <section>
-                        <h4><?php echo $modelo->modelo ?></h4>
-                        <a href="<?php echo $modelo->imagen ?>"><img src="<?php echo $modelo->imagen ?>" alt="imagen del modelo"></a>
-                        <h6><?php echo 'Modelo ' . $modelo->anio ?></h6>
-                        <h5><?php echo number_format($modelo->km, 0, '.', '.') . ' km.' ?></h5>
-                        <h2><?php echo '$ ' . number_format($modelo->precio, 0, ',', '.'); ?></h2>
-                        <?php if (!$modelo->vendido) { ?><a href="vendido/<?php echo $modelo->id ?>" type="button" name="comprar" class="btn btn-danger">Comprar</a> <?php }
-                        if ($modelo->vendido) {
-                            echo '<h1>¡Vendido!</h1>';
-                        } else {
-                        ?><a href="detalles/<?php echo $modelo->id ?>" type="button" name="detalles" class="btn btn-danger">Detalles</a>
-                        <?php } ?>
-                        <br>
-                    </section>
-            <?php
+                    include 'templates/section-details.phtml';
                 }
             }
             ?>
@@ -158,8 +116,7 @@ class taskveiwV {
         require_once 'templates/footer.phtml';
     }
 
-
-    function factoryCars($modelos) {
+    function yesNewCars($modelos) {
         require_once 'templates/header.phtml';
     ?>
         <h1>Autos 0Km</h1>
@@ -169,61 +126,16 @@ class taskveiwV {
                 <li><a href="usados">Usados</a></li>
             </ul>
         </nav>
-
-        <form action="/action_page.php" method="POST">
-            <label for="marca">Marca:</label>
-            <select name="cars" id="cars" class="form-select" aria-label="Default select example">
-                <option value="">Seleccione una marca</option>
-                <optgroup label="EE.UU">
-                    <option value="ford">Ford</option>
-                    <option value="chevrolet">Chevrolet</option>
-                    <option value="jeep">Jeep</option>
-                </optgroup>
-                <optgroup label="Japón">
-                    <option value="toyota">Toyota</option>
-                    <option value="mitsubishi">Mitsubishi</option>
-                </optgroup>
-                <optgroup label="Francia">
-                    <option value="citroen">Citroën</option>
-                    <option value="renault">Renault</option>
-                    <option value="peugeot">Peugeot</option>
-                </optgroup>
-                <optgroup label="Alemania">
-                    <option value="volkswagen">Volkswagen</option>
-                    <option value="audi">Audi</option>
-                    <option value="bmw">BMW</option>
-                </optgroup>
-                <optgroup label="Italia">
-                    <option value="fiat">Fiat</option>
-                    <option value="alfa">Alfa Romeo</option>
-                </optgroup>
-            </select>
-            <br><br>
-            <input type="submit" value="Mostrar">
-        </form>
-
+        <?php
+            require_once 'templates/form-marcas.phtml';
+        ?>
         <div class="nuevos">
             <?php
-            // Muestro los modelos usados
+            // Muestro los modelos 0km
             foreach ($modelos as $modelo) {
                 if ($modelo->es_nuevo === 1) {
                     // Muestro el modelo
-            ?>
-                    <section>
-                        <h4><?php echo $modelo->modelo ?></h4>
-                        <a href="<?php echo $modelo->imagen ?>"><img src="<?php echo $modelo->imagen ?>" alt="imagen del modelo"></a>
-                        <h6><?php echo 'Modelo ' . $modelo->anio ?></h6>
-                        <h5><?php echo number_format($modelo->km, 0, '.', '.') . ' km.' ?></h5>
-                        <h2><?php echo '$ ' . number_format($modelo->precio, 0, ',', '.'); ?></h2>
-                        <?php if (!$modelo->vendido) { ?><a href="vendido/<?php echo $modelo->id ?>" type="button" name="comprar" class="btn btn-danger">Comprar</a> <?php }
-                        if ($modelo->vendido) {
-                            echo '<h1>¡Vendido!</h1>';
-                        } else {
-                        ?><a href="detalles/<?php echo $modelo->id ?>" type="button" name="detalles" class="btn btn-danger">Detalles</a>
-                        <?php } ?>
-                        <br>
-                    </section>
-            <?php
+                    include 'templates/section-details.phtml';
                 }
             }
             ?>
@@ -272,9 +184,8 @@ class taskveiwV {
                 <label for="imagen" class="form-label">Imagen</label>
                 <input type="file" class="form-control" name="imagen" id="imagen" accept="image/*" placeholder="Ingrese imagen">
             </div>
-            <form action="agregar" method="post">
-                <button type="submit" class="btn btn-success">Añadir</button>
-            </form>
+                <a href="agregar/"><input type="button" value="Añadir" class="btn btn-success"></a>
+                <!-- <button type="submit" class="btn btn-success">Añadir</button> -->
         </form>
 <?php
         require_once 'templates/footer.phtml';
