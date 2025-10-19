@@ -92,6 +92,7 @@ function showHome() {
 <?php
   require_once 'templates/header.phtml';
   login();
+  require_once 'templates/form-addCar.phtml';
   // showCarBrands();
   // register();
   require_once 'templates/footer.phtml';
