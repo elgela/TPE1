@@ -1,6 +1,7 @@
 <?php
 class taskModelV {
 
+
     private function conectionDB() {
         $db = new PDO('mysql:host=localhost;dbname=concesionaria;charset=utf8', 'root', '');
         return $db;
@@ -19,10 +20,16 @@ class taskModelV {
 
         return $models;
     }
-
+    
     function updateCar($id) {
         $db = $this->conectionDB();
         $query = $db->prepare('UPDATE vehiculos SET vendido = 1 WHERE id = ?');
+        $query->execute([$id]);
+    }
+
+    function deleteCar($id) {
+        $db = $this->conectionDB();
+        $query = $db->prepare('DELETE FROM vehiculos WHERE id = ?');
         $query->execute([$id]);
     }
 //////////
@@ -38,22 +45,30 @@ class taskModelV {
     //     $query->execute([$es_nuevo]);
     // }
 
-    function insertCar($modelo, $anio, $km, $precio, $patente, $imagen) {
+    function insertCar($modelo, $anio, $km, $precio, $patente, $es_nuevo, $imagen, $vendido, $marca, $nacionalidad, $anio_de_creacion) {
         $db = $this->conectionDB();
-        // buscar si existe
-        $query = $db->prepare("SELECT id FROM vehiculos WHERE modelo = ?");
-        $query->execute([$modelo]);
-        $vehiculo = $query->fetch(PDO::FETCH_ASSOC);
 
-        if ($vehiculo) {
-            $id_marca = $modelo['id'];
+        // 1. Verificar si la marca ya existe
+        $query = $db->prepare("SELECT id FROM marcas WHERE marca = ?");
+        $query->execute([$marca]);
+        $resultadoMarca = $query->fetch(PDO::FETCH_ASSOC);
+
+        if ($resultadoMarca) {
+            $id_marca = $resultadoMarca['id'];
         } else {
             // 2. Insertar nueva marca
-            $insertCar = $db->prepare("INSERT INTO vehiculos (modelo, anio, km, precio, patente, imagen, vendido) VALUES (?,?,?,?,?,?,0)");
-            $insertCar->execute([$modelo, $anio, $km, $precio, $patente, $imagen]);
+            $insertMarca = $db->prepare("INSERT INTO marcas(marca, nacionalidad, anio_de_creacion) VALUES (?,?,?)");
+            $insertMarca->execute([$marca, $nacionalidad, $anio_de_creacion]);
             $id_marca = $db->lastInsertId();
         }
-        return $id_marca;
+        // echo 'estoy en addcar model';
+            // var_dump($modelo, $anio, $km, $precio, $patente, $es_nuevo, $imagen, $vendido, $marca, $nacionalidad, $anio_de_creacion);
+            // die();
+
+        // 3. Insertar vehículo
+        $insertVehiculo = $db->prepare("INSERT INTO vehiculos(modelo, anio, km, precio, patente, imagen, vendido, es_nuevo, id_marca) VALUES (?,?,?,?,?,?,?,?,?)");
+        $insertVehiculo->execute([$modelo, $anio, $km, $precio, $patente, $es_nuevo, $imagen, $vendido, $id_marca]);
     }
 
 }
+
