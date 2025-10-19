@@ -12,14 +12,12 @@ class taskveiwV {
                     <li><a href="usados">Usados</a></li>
                 </ul>
             </nav>
-            <!-- <h3>Seleccione la marca</h3> -->
+            <h3>Seleccione la marca</h3>
+            <?php
+
+            ?>
             <div>
                 <button type="submit" class="btn btn-info">Ordenar</button> <input type="text" name="buscar" id="" placeholder="Ordenar por marca">
-            </div>
-            <br>
-            <div>
-                <a href="agregar"><input type="button" value="Agregar vehículo" class="btn btn-outline-info"></a>
-                <!-- <button type="submit" class="btn btn-outline-info" name="agregar">Agregar vehículo</button> -->
             </div>
             <div class="modelos">
                 <?php foreach ($modelos as $modelo) { 
@@ -134,46 +132,6 @@ class taskveiwV {
         echo "<h2> $msj </h2>";
     }
     ///////////////
-    function addCar() {
-        require_once 'templates/header.phtml';
-    ?>
-        <h2>Ingrese vehículo</h2>
-        <form action="agregar" method="POST">
-            <div class="mb-3">
-                <label class="form-label">Marca</label>
-                <input type="text" class="form-control" name="marca" id="" placeholder="Ingrese la marca">
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Modelo</label>
-                <input type="text" class="form-control" name="modelo" id="" placeholder="Ingrese el modelo">
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Año</label>
-                <input type="numero" class="form-control" name="anio" id="" placeholder="Ingrese el año">
-            </div>
-
-            <div class="mb-3">
-                <label class="form-label">Km</label>
-                <input type="numero" class="form-control" name="km" id="" placeholder="Ingrese kilómetros">
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Precio</label>
-                <input type="numero" class="form-control" name="precio" id="" placeholder="Ingrese valor">
-            </div>
-            <div class="mb-3">
-                <label class="form-label">Patente</label>
-                <input type="text" class="form-control" name="patente" id="" placeholder="Ingrese su patente">
-            </div>
-            <div class="mb-3">
-                <label for="imagen" class="form-label">Imagen</label>
-                <input type="file" class="form-control" name="imagen" id="imagen" accept="image/*" placeholder="Ingrese imagen">
-            </div>
-                <a href="agregar/"><input type="button" value="Añadir" class="btn btn-success"></a>
-                <!-- <button type="submit" class="btn btn-success">Añadir</button> -->
-        </form>
-<?php
-        require_once 'templates/footer.phtml';
-    }
 }
 
 ?>
