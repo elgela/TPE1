@@ -37,7 +37,7 @@ switch ($params[0]) {
     case 'modelos':
         $controlerV->showCarModel();
         break;
-    case 'agregar':
+    case 'add':
         $controlerV->addCarModel();
         break;
     case 'ver':
