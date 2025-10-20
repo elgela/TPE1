@@ -47,14 +47,14 @@ switch ($params[0]) {
             $controler->showCarBrands();  
         }
         break;
-        case 'detalles':
+    case 'detalles':
         $controlerV->showCarDetails($params[1]);
         break;
     case 'vendido':
         $controlerV->sellCar($params[1]);
         break;
     case 'eliminar':
-        $controler-> removeBrand($params[1]);
+        $controler->removeBrand($params[1]);
         break;
     case 'usados':
         $controlerV->usedCars($params[0]);
