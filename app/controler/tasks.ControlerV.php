@@ -58,25 +58,30 @@
         }
 
         function addCarModel() {
-            if (isset($_POST['modelo'], $_POST['anio'], $_POST['km'], $_POST['precio'], $_POST['patente'], $_POST['marca']) && !empty($_POST['marca']) && !empty($_POST['modelo']) && !empty($_POST['anio']) && !empty($_POST['km']) && !empty($_POST['precio'])) {
+            if (isset($_POST['modelo'], $_POST['anio'], $_POST['km'], $_POST['precio'], $_POST['patente'], $_POST['marca']) && !empty($_POST['marca']) && !empty($_POST['modelo']) && !empty($_POST['anio']) && !empty($_POST['precio'])) {
                 $modelo = trim($_POST['modelo']); // trim evita espacios accidentales
                 $anio = filter_var($_POST['anio'], FILTER_VALIDATE_INT);
                 $km = filter_var($_POST['km'], FILTER_VALIDATE_INT);
                 $precio = filter_var($_POST['precio'], FILTER_VALIDATE_FLOAT);
-                $patente = strtoupper(trim($_POST['patente'])); // Ej: abc123 -> ABC123
+                $patente = !empty($_POST['patente']) ? strtoupper(trim($_POST['patente'])) : null; // Ej: abc123 -> ABC123
                 $es_nuevo = isset($_POST['es_nuevo']) ? 1 : 0;
-                $imagen = $_FILES['imagen']['name'];
+                $imagen = null;
+                if (isset($_POST['imagen']) && filter_var($_POST['imagen'], FILTER_VALIDATE_URL)) {
+                    $imagen = $_POST['imagen'];
+                } else {
+                    $imagen = null;
+                    // echo "La URL ingresada no es válida.";
+                }
                 $vendido = isset($_POST['vendido']) ? 1 : 0;
                 $marca = trim($_POST['marca']);
                 $nacionalidad = $_POST['nacionalidad'] ?? null;
                 $anio_de_creacion = $_POST['anio_de_creacion'] ?? null;
-                move_uploaded_file($_FILES['imagen']['tmp_name'], 'img/uploads/' . $_FILES['imagen']['name']);
-                // var_dump($marca, $modelo, $anio, $km, $precio, $patente, $imagen);
-                // die();
                 // echo 'estoy en addcar controler';
+                // var_dump($modelo, $anio, $km, $precio, $patente, $es_nuevo, $imagen, $vendido, $marca, $nacionalidad, $anio_de_creacion);
+                // die();
                 $this->model->insertCar($modelo, $anio, $km, $precio, $patente, $es_nuevo, $imagen, $vendido, $marca, $nacionalidad, $anio_de_creacion);
-                // printf("<script type='text/javascript'>alert('Lo estamos redireccionando'); </script>"); 
                 header("Location: " . BASE_URL . "modelos");
+                printf("<script type='text/javascript'>alert('Auto agregado'); </script>"); 
             } else {
                 $this->veiw->showError('Falta ingresar datos');
             }

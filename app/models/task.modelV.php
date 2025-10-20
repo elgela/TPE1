@@ -11,7 +11,7 @@ class taskModelV {
         // 1. abro conexión con DB
         $db = $this->conectionDB();
 
-        // 2. ejecuto consulta SQL (SELECT * FROM vehiculos)
+        // 2. consulta SQL (SELECT * FROM vehiculos)
         $query = $db->prepare('SELECT * FROM vehiculos');
         $query->execute();
 
@@ -32,18 +32,6 @@ class taskModelV {
         $query = $db->prepare('DELETE FROM vehiculos WHERE id = ?');
         $query->execute([$id]);
     }
-//////////
-    // function used($es_nuevo) {
-    //     $db = $this->conectionDB();
-    //     $query = $db->prepare('SELECT * FROM vehiculos WHERE es_nuevo = 0');
-    //     $query->execute([$es_nuevo]);
-    // }
-
-    // function new($es_nuevo) {
-    //     $db = $this->conectionDB();
-    //     $query = $db->prepare('SELECT * FROM vehiculos WHERE es_nuevo = 1');
-    //     $query->execute([$es_nuevo]);
-    // }
 
     function insertCar($modelo, $anio, $km, $precio, $patente, $es_nuevo, $imagen, $vendido, $marca, $nacionalidad, $anio_de_creacion) {
         $db = $this->conectionDB();
@@ -61,12 +49,9 @@ class taskModelV {
             $insertMarca->execute([$marca, $nacionalidad, $anio_de_creacion]);
             $id_marca = $db->lastInsertId();
         }
-        // echo 'estoy en addcar model';
-            // var_dump($modelo, $anio, $km, $precio, $patente, $es_nuevo, $imagen, $vendido, $marca, $nacionalidad, $anio_de_creacion);
-            // die();
 
         // 3. Insertar vehículo
-        $insertVehiculo = $db->prepare("INSERT INTO vehiculos(modelo, anio, km, precio, patente, imagen, vendido, es_nuevo, id_marca) VALUES (?,?,?,?,?,?,?,?,?)");
+        $insertVehiculo = $db->prepare("INSERT INTO vehiculos(modelo, anio, km, precio, patente, es_nuevo, imagen, vendido, id_marca) VALUES (?,?,?,?,?,?,?,?,?)");
         $insertVehiculo->execute([$modelo, $anio, $km, $precio, $patente, $es_nuevo, $imagen, $vendido, $id_marca]);
     }
 

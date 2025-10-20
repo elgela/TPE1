@@ -8,6 +8,7 @@ class taskveiwV {
             <h2>MODELOS</h2>
             <nav class="navBar">
                 <ul>
+                    <li><a href="todos">Todos</a></li>
                     <li><a href="nuevos">0 Km.</a></li>
                     <li><a href="usados">Usados</a></li>
                 </ul>
@@ -73,6 +74,7 @@ class taskveiwV {
         <h1>Autos usados</h1>
         <nav class="navBar">
             <ul>
+                <li><a href="todos">Todos</a></li>
                 <li><a href="nuevos">0 Km.</a></li>
                 <li><a href="usados">Usados</a></li>
             </ul>
@@ -104,6 +106,7 @@ class taskveiwV {
         <h1>Autos 0Km</h1>
         <nav class="navBar">
             <ul>
+                <li><a href="todos">Todos</a></li>
                 <li><a href="nuevos">0 Km.</a></li>
                 <li><a href="usados">Usados</a></li>
             </ul>
