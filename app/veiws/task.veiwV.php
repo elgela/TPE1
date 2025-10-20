@@ -56,7 +56,7 @@ class taskveiwV {
                     <h5>Patente: <?= $modelo->patente ?></h5>
                 <?php endif ?>
                 <h2>Precio: $<?= number_format($modelo->precio, 0, ',', '.') ?></h2>
-                <img src="<?= $modelo->imagen ?>" alt="Imagen de <?= $modelo->modelo ?>">
+                <img src="<?= $modelo->imagen ?>" alt="Imagen de <?= $modelo->modelo ?>" style="max-width:500px;" >
             <?php
             } else {
             ?>
