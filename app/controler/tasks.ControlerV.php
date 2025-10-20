@@ -12,13 +12,23 @@
             $this->veiw = new taskveiwV();
         }
 
-        function showCarModel() {
+        function showHomeUser($request) {
             
             // obtengo los modelos/vehiculos
             $modelos = $this->model->getCarModel();
 
-            //actualizo la vista
-            $this-> veiw-> showTaksV($modelos);
+            //actualizo la vista no funciona demomento
+            $this-> veiw-> showTaksVehiculosUser($modelos , $request->user);
+
+        }
+
+        function showHome() {
+            
+            // obtengo los modelos/vehiculos
+            $modelos = $this->model->getCarModel();
+
+            //actualizo la vista no funciona demomento
+            $this-> veiw-> showTaksVehiculos($modelos);
 
         }
 

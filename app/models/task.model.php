@@ -1,14 +1,6 @@
 <?php
-
-    // require_once 'app/confic/confic.php';
+    require_once 'app/models/model.php';
     class taskModel extends Model{
-        //coneccion a la D
-        // private function conectionDB() {    
-        //     $db = new PDO("mysql:host=" . HOST .";dbname=" . DBNAME . ";charset=utf8",USER,PASS);
-
-        //     return $db;
-        // }
-
         // Obtiene y devuelve la base de datos de las marcas
         function getCarBrands() {
 
