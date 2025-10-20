@@ -81,7 +81,6 @@
                 // die();
                 $this->model->insertCar($modelo, $anio, $km, $precio, $patente, $es_nuevo, $imagen, $vendido, $marca, $nacionalidad, $anio_de_creacion);
                 header("Location: " . BASE_URL . "modelos");
-                printf("<script type='text/javascript'>alert('Auto agregado'); </script>"); 
             } else {
                 $this->veiw->showError('Falta ingresar datos');
             }
