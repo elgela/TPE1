@@ -75,6 +75,7 @@
                 // die();
                 // echo 'estoy en addcar controler';
                 $this->model->insertCar($modelo, $anio, $km, $precio, $patente, $es_nuevo, $imagen, $vendido, $marca, $nacionalidad, $anio_de_creacion);
+                // printf("<script type='text/javascript'>alert('Lo estamos redireccionando'); </script>"); 
                 header("Location: " . BASE_URL . "modelos");
             } else {
                 $this->veiw->showError('Falta ingresar datos');
