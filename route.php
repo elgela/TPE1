@@ -2,17 +2,22 @@
     require_once './app/tasks.php';
     require_once './app/controler/tasks.Controler.php';
     require_once './app/controler/tasks.ControlerV.php';
-
-define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/');
-
+    require_once 'app/controler/user.controler.php';
+    
 $action = 'home'; // acción por defecto
 if (!empty($_GET['action'])) {
     $action = $_GET['action'];
 }
+
+define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/');
+
+
+
+
 //se istancian los controlers
 $controler = new tasksControler();
 $controlerV = new tasksControlerV();
-
+$controlerUser = new userController();
 
 //         TABLA DE RUTEO
 //    *action*                  *function*
@@ -25,6 +30,10 @@ $controlerV = new tasksControlerV();
 session_start();
 // parsea la acción para separar acción real de parámetros
 $params = explode('/', $action);
+
+$request = new StdClass();
+$request = (new SessionMiddleware())->run($request);
+
 
 switch ($params[0]) {
     case 'home':
@@ -60,9 +69,9 @@ switch ($params[0]) {
         break;
     case 'ver':
         if (isset($params[1])) {
-            $controler->showCarBrandById($params[1]);
+            $controlerV->showCarBrandById($params[1]);
         } else {
-            $controler->showCarBrands();  
+            $controlerV->showHome($request); 
         }
         break;
     case 'buscarMarca':

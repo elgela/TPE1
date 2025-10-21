@@ -1,0 +1,18 @@
+
+<h2>Editar marca</h2> 
+<form action="actualizarMarca" method="post" class="marcas">
+    <input type="hidden" name="id" value="<?= $marca->id ?>">
+    
+    <label>Marca</label>
+    <input type="text" name="marca" value="<?= htmlspecialchars($marca->marca) ?>" required>
+
+    <label>Nacionalidad</label>
+    <input type="text" name="nacionalidad" value="<?= htmlspecialchars($marca->nacionalidad) ?>" required>
+
+    <label>Año de creación</label>
+    <input type="number" name="anio" value="<?= htmlspecialchars($marca->anio_de_creacion) ?>" required>
+
+    <button type="submit">Guardar cambios</button>
+</form>
+
+
