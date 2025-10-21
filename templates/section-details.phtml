@@ -1,7 +1,7 @@
 <section>
     <h4><?php echo $modelo->modelo ?></h4>
     <?php if (!empty($modelo->imagen) && filter_var($modelo->imagen, FILTER_VALIDATE_URL)): ?>
-    <a href="detalles/<?php echo $modelo->id ?>"><img src="<?= htmlspecialchars($modelo->imagen) ?>" alt="Imagen de <?php echo $modelo->modelo ?>" style="max-width:500px;"></a>
+    <a href="detallesModelo/<?php echo $modelo->id ?>"><img src="<?= htmlspecialchars($modelo->imagen) ?>" alt="Imagen de <?php echo $modelo->modelo ?>" style="max-width:500px;"></a>
     <?php else: ?>
         <p>Imagen no disponible</p>
     <?php endif; ?>
@@ -9,11 +9,11 @@
     <h2><?php echo '$ ' . number_format($modelo->precio, 0, ',', '.'); ?></h2>
     <?php if (!$modelo->vendido) { ?><a href="vendido/<?php echo $modelo->id ?>" type="button" name="comprar" class="btn btn-danger">Comprar</a> <?php }
     if ($modelo->vendido) {
-        ?><a href="quitar/<?php echo $modelo->id ?>" type="button" name="eliminar" class="btn btn-danger">Quitar</a> 
+        ?><a href="quitarModelo/<?php echo $modelo->id ?>" type="button" name="eliminar" class="btn btn-danger">Quitar</a> 
         <h1>¡Vendido!</h1>
     <?php
     } else {
-    ?><a href="detalles/<?php echo $modelo->id ?>" type="button" name="detalles" class="btn btn-danger">Detalles</a>
+    ?><a href="detallesModelo/<?php echo $modelo->id ?>" type="button" name="detalles" class="btn btn-danger">Detalles</a>
     <?php } ?>
     <br>
 </section>

@@ -63,20 +63,18 @@
                 $anio = filter_var($_POST['anio'], FILTER_VALIDATE_INT);
                 $km = filter_var($_POST['km'], FILTER_VALIDATE_INT);
                 $precio = filter_var($_POST['precio'], FILTER_VALIDATE_FLOAT);
-                $patente = !empty($_POST['patente']) ? strtoupper(trim($_POST['patente'])) : null; // Ej: abc123 -> ABC123
+                $patente = !empty($_POST['patente']) ? strtoupper(trim($_POST['patente'])) : null; // strtoupper: abc123 -> ABC123
                 $es_nuevo = isset($_POST['es_nuevo']) ? 1 : 0;
                 $imagen = null;
                 if (isset($_POST['imagen']) && filter_var($_POST['imagen'], FILTER_VALIDATE_URL)) {
                     $imagen = $_POST['imagen'];
                 } else {
                     $imagen = null;
-                    // echo "La URL ingresada no es válida.";
                 }
                 $vendido = isset($_POST['vendido']) ? 1 : 0;
                 $marca = trim($_POST['marca']);
                 $nacionalidad = $_POST['nacionalidad'] ?? null;
                 $anio_de_creacion = $_POST['anio_de_creacion'] ?? null;
-                // echo 'estoy en addcar controler';
                 // var_dump($modelo, $anio, $km, $precio, $patente, $es_nuevo, $imagen, $vendido, $marca, $nacionalidad, $anio_de_creacion);
                 // die();
                 $this->model->insertCar($modelo, $anio, $km, $precio, $patente, $es_nuevo, $imagen, $vendido, $marca, $nacionalidad, $anio_de_creacion);
@@ -87,9 +85,4 @@
         }
         
     }
-    //    if (empty($marca) && empty($modelo)) {
-    //         $this->veiw->showError('Falta ingresar datos');
-    //    } else {
-    //    }
-
 ?>
