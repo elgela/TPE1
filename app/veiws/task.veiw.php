@@ -88,20 +88,7 @@
                         ?>
                     </tbody>
             </table>
-            <section class="form-agregar">
-                <h3>Agregar nueva marca</h3>
-                <form action="agregarMarca" method="POST">
-                    <label>Marca</label>
-                    <input type="text" name="marca" required>
-
-                    <label>Nacionalidad</label>
-                    <input type="text" name="nacionalidad" required>
-                    
-                    <label>Año de creación</label>
-                    <input type="number" name="anio" required>
-
-                    <button type="submit">Agregar</button>
-                </form>
+            
             </section>
             <?php
             require_once 'templates/footer.phtml';

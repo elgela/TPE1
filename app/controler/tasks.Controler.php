@@ -40,32 +40,35 @@
             $this->veiw->showTaksById($marca,$request); 
         }
 
-        function buscar($request) {
+        function buscar() {
             if (isset($_POST['marca']) && !empty($_POST['marca'])) {
                 $nombre = trim($_POST['marca']);
 
                 $marca = $this->model->getCarBrandByName($nombre);
 
-                $this->veiw->showTaksById($marca,$request);
+                // $this->veiw->showTaksById($marca,$request);
+                $this->veiw->showTaksById($marca);
             } else {
                 // Si no se ingresó nada, muestro todas
                 $marcas = $this->model->getCarBrands();
-                $this->veiw->showTaks($marcas,$request);
+                $this->veiw->showTaks($marcas);
+                // $this->veiw->showTaks($marcas,$request);
                 // $this->veiw->showError("no se logro encontrar");
             }
         }
 
-        function removeBrand($id,$request) {
+        function removeBrand($id) {
             //borro la marca que del id que pase
             $this->model->deleteBrand($id);
 
             //redirijo al inicio
                 $marcas = $this->model->getCarBrands();
-                $this->veiw->showTaks($marcas,$request);
+                // $this->veiw->showTaks($marcas,$request);
+                $this->veiw->showTaks($marcas);
         }
 
 
-        function insert($request){
+        function insert(){
             
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $marca = $_POST['marca'] ?? null;
@@ -78,20 +81,22 @@
             }
 
                 $marcas = $this->model->getCarBrands();
-                $this->veiw->showTaks($marcas,$request);
+                // $this->veiw->showTaks($marcas,$request);
+                $this->veiw->showTaks($marcas);
             
         }
 
-        function edit($id,$request) {
+        function edit($id) {
             
             // Traer la marca desde el modelo
             $marca = $this->model->getCarBrandById($id);
 
             // Pasar esos datos a la vista para precargar el formulario
-            $this->veiw->showEditForm($marca,$request);
+            // $this->veiw->showEditForm($marca,$request);
+            $this->veiw->showEditForm($marca);
         }
 
-        function update($request) {
+        function update() {
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $id = $_POST['id'] ?? null;
                 $marca = $_POST['marca'] ?? null;
@@ -103,7 +108,8 @@
 
                     //actualizo
                     $marcas = $this->model->getCarBrands();
-                    $this->veiw->showTaks($marcas,$request);
+                    // $this->veiw->showTaks($marcas,$request);
+                    $this->veiw->showTaks($marcas);
                 } else {
                     $this->veiw->showError("no se pudo actualizar");
                 }
