@@ -1,5 +1,4 @@
 <?php
-    // require_once './app/db.php';
     require_once './app/tasks.php';
     require_once './app/controler/tasks.Controler.php';
     require_once './app/controler/tasks.ControlerV.php';
@@ -23,7 +22,7 @@ $controlerV = new tasksControlerV();
 // eliminar/:ID       ->    deleteVehiculo($id)
 // vendido/:ID        ->      sellCar($id);
 
-
+session_start();
 // parsea la acción para separar acción real de parámetros
 $params = explode('/', $action);
 
@@ -31,13 +30,32 @@ switch ($params[0]) {
     case 'home':
         showHome();
         break;
+    case 'login':
+        $controlerUser->showLogin($request);
+        break;
+    case 'doLogin':
+        $controlerUser->doLogin($request);
+        break;
     case 'marcas':
-        $controler->showCarBrands();    
+        $controler->showCarBrands($request);    
         break;
     case 'modelos':
         $controlerV->showCarModel();
         break;
-    case 'add':
+    case 'agregarMarca':
+        // $controler->insert($request);    
+        break;
+    case 'modificarMarca':
+        if (isset($params[1])) {
+            // $controler->edit($params[1],$request); // $params[1] = ID de la marca
+        } else {
+            $controler->showCarBrands($request); // si no viene ID, volvemos al listado
+        }
+        break;
+    case 'actualizarMarca':
+        // $controler->update($request); // update() recibe $_POST con id, marca, nacionalidad y anio
+        break;
+    case 'agregarModelo':
         $controlerV->addCarModel();
         break;
     case 'ver':
@@ -47,14 +65,17 @@ switch ($params[0]) {
             $controler->showCarBrands();  
         }
         break;
-    case 'detalles':
+    case 'buscarMarca':
+        // $controler->buscar($request);
+        break;
+    case 'detallesModelo':
         $controlerV->showCarDetails($params[1]);
         break;
     case 'vendido':
         $controlerV->sellCar($params[1]);
         break;
-    case 'eliminar':
-        $controler->removeBrand($params[1]);
+    case 'eliminarMarca':
+        $controler->removeBrand($params[1], $request);
         break;
     case 'usados':
         $controlerV->usedCars($params[0]);
@@ -62,7 +83,9 @@ switch ($params[0]) {
     case 'nuevos':
         $controlerV->newCars($params[0]);
         break;
-    case 'quitar':
+    case 'todos':
+        $controlerV->showCarModel();
+    case 'quitarModelo':
         $controlerV->eraseCar($params[1]);
         break;
     default:
