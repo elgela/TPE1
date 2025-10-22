@@ -1,5 +1,5 @@
 <?php
-    require_once './app/tasks.php';
+    // require_once './app/tasks.php';
     require_once './app/controler/tasks.Controler.php';
     require_once './app/controler/tasks.ControlerV.php';
     require_once 'app/controler/user.controler.php';
@@ -32,12 +32,12 @@ session_start();
 $params = explode('/', $action);
 
 $request = new StdClass();
-$request = (new SessionMiddleware())->run($request);
+// $request = (new SessionMiddleware())->run($request);
 
 
 switch ($params[0]) {
     case 'home':
-        showHome();
+        $controlerV->showCarModel();
         break;
     case 'login':
         $controlerUser->showLogin($request);
@@ -52,30 +52,33 @@ switch ($params[0]) {
         $controlerV->showCarModel();
         break;
     case 'agregarMarca':
-        // $controler->insert($request);    
+        $controler->insert($request);    
         break;
     case 'modificarMarca':
         if (isset($params[1])) {
-            // $controler->edit($params[1],$request); // $params[1] = ID de la marca
+            $controler->edit($params[1],$request); // $params[1] = ID de la marca
         } else {
             $controler->showCarBrands($request); // si no viene ID, volvemos al listado
         }
         break;
     case 'actualizarMarca':
-        // $controler->update($request); // update() recibe $_POST con id, marca, nacionalidad y anio
+        $controler->update($request); // update() recibe $_POST con id, marca, nacionalidad y anio
         break;
     case 'agregarModelo':
         $controlerV->addCarModel();
         break;
+    case 'insertarModelo':
+        $controlerV->addCarModel();
+        break;
     case 'ver':
         if (isset($params[1])) {
-            $controlerV->showCarBrandById($params[1]);
+            // $controlerV->showCarBrandById($params[1]);
         } else {
-            $controlerV->showHome($request); 
+            $controlerV->showCarModel(); 
         }
         break;
     case 'buscarMarca':
-        // $controler->buscar($request);
+        $controler->buscar($request);
         break;
     case 'detallesModelo':
         $controlerV->showCarDetails($params[1]);
