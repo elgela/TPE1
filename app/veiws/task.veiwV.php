@@ -26,6 +26,7 @@ class taskveiwV {
         require_once 'templates/footer.phtml';
     }
 
+    
     function showDetails($modelos, $id) {
         require_once 'templates/header.phtml';
     ?>

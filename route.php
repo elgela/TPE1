@@ -35,7 +35,7 @@ $controlerUser = new userController();
 $params = explode('/', $action);
 
 $request = new StdClass();
-// $request = (new SessionMiddleware())->run($request);
+$request = (new SessionMiddleware())->run($request);
 
 
 switch ($params[0]) {
