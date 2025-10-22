@@ -35,7 +35,8 @@ $controlerUser = new userController();
 $params = explode('/', $action);
 
 $request = new StdClass();
-$request = (new SessionMiddleware())->run($request);
+// $request = (new SessionMiddleware())->run($request);
+
 
 switch ($params[0]) {
 
@@ -86,14 +87,13 @@ switch ($params[0]) {
             echo "Falta el ID de la marca a eliminar.";
         }
         break;
-
-    case 'buscarMarca':
-        $controler->buscar();
+    case 'insertarModelo':
+        $controlerV->addCarModel();
         break;
 
     case 'ver':
         if (isset($params[1])) {
-            $controlerV->showCarBrandById($params[1]);
+            // $controlerV->showCarBrandById($params[1]);
         } else {
             $controlerV->showHome($request);
         }
