@@ -63,7 +63,7 @@ class tasksControlerV {
             $precio = filter_var($_POST['precio'], FILTER_VALIDATE_FLOAT);
             $patente = !empty($_POST['patente']) ? strtoupper(trim($_POST['patente'])) : null;
             $es_nuevo = isset($_POST['es_nuevo']) ? 1 : 0;
-            if ($es_nuevo == 1) {
+            if ($es_nuevo) {
                 $km = 0;
             } elseif (empty($_POST['km']) || !is_numeric($_POST['km'])) {
                 $errores[] = "Debes ingresar los kilómetros para vehículos usados";
