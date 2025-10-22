@@ -60,10 +60,17 @@ class tasksControlerV {
 
             $modelo = trim($_POST['modelo']);
             $anio = filter_var($_POST['anio'], FILTER_VALIDATE_INT);
-            $km = filter_var($_POST['km'], FILTER_VALIDATE_INT);
+            $km = !empty($_POST['km']) ? filter_var($_POST['km'], FILTER_VALIDATE_INT) : null;
             $precio = filter_var($_POST['precio'], FILTER_VALIDATE_FLOAT);
             $patente = !empty($_POST['patente']) ? strtoupper(trim($_POST['patente'])) : null;
             $es_nuevo = isset($_POST['es_nuevo']) ? 1 : 0;
+            if ($es_nuevo == 1) {
+                $km = 0;
+            } elseif (empty($_POST['km']) || !is_numeric($_POST['km'])) {
+                $errores[] = "Debes ingresar los kilómetros para vehículos usados";
+            } else {
+                $km = (int) $_POST['km'];
+            }
             $imagen = isset($_POST['imagen']) && filter_var($_POST['imagen'], FILTER_VALIDATE_URL) ? $_POST['imagen'] : null;
             $vendido = isset($_POST['vendido']) ? 1 : 0;
             $marca = trim($_POST['marca']);
