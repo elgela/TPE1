@@ -105,7 +105,6 @@ switch ($params[0]) {
         break;
 
     case 'agregarModelo':
-    case 'add':
         $controlerV->addCarModel();
         break;
 
