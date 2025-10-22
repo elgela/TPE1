@@ -13,9 +13,9 @@ class taskveiwV {
                     <li><a href="usados">Usados</a></li>
                 </ul>
             </nav>
-            <h3>Seleccione la marca</h3>
+            <!-- <h3>Seleccione la marca</h3> -->
             <?php
-                require_once 'templates/form-addCar.phtml';
+                include 'templates/form-addCar.phtml';
             ?>
             <div>
                 <button type="submit" class="btn btn-info">Ordenar</button> <input type="text" name="buscar" id="" placeholder="Ordenar por marca">

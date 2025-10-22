@@ -74,10 +74,6 @@ switch ($params[0]) {
     case 'agregarModelo':
         $controlerV->addCarModel();
         break;
-    case 'insertarModelo':
-        $controlerV->addCarModel();
-        break;
-
     case 'ver':
         if (isset($params[1])) {
             // $controlerV->showCarBrandById($params[1]);

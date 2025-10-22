@@ -55,8 +55,7 @@ class tasksControlerV {
     }
 
     function addCarModel() {
-        if (isset($_POST['modelo'], $_POST['anio'], $_POST['km'], $_POST['precio'], $_POST['patente'], $_POST['marca'])
-            && !empty($_POST['marca']) && !empty($_POST['modelo']) && !empty($_POST['anio']) && !empty($_POST['precio'])) {
+        if (isset($_POST['modelo'], $_POST['anio'], $_POST['precio'], $_POST['patente'], $_POST['marca']) && !empty($_POST['marca']) && !empty($_POST['modelo']) && !empty($_POST['anio']) && !empty($_POST['precio'])) {
 
             $modelo = trim($_POST['modelo']);
             $anio = filter_var($_POST['anio'], FILTER_VALIDATE_INT);
@@ -71,7 +70,10 @@ class tasksControlerV {
             } else {
                 $km = (int) $_POST['km'];
             }
-            $imagen = isset($_POST['imagen']) && filter_var($_POST['imagen'], FILTER_VALIDATE_URL) ? $_POST['imagen'] : null;
+            $imagen = null;
+            if (isset($_POST['imagen']) && filter_var($_POST['imagen'], FILTER_VALIDATE_URL)) {
+                $imagen = $_POST['imagen'];
+            }
             $vendido = isset($_POST['vendido']) ? 1 : 0;
             $marca = trim($_POST['marca']);
             $nacionalidad = $_POST['nacionalidad'] ?? null;
