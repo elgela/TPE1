@@ -39,7 +39,7 @@ switch ($params[0]) {
 
     // --- HOME ---
     case 'home':
-        $controlerV->showCarModel();
+        $controlerV->showHome();
         break;
 
     // --- LOGIN ---
@@ -82,7 +82,7 @@ switch ($params[0]) {
         if (isset($params[1])) {
             // $controlerV->showCarBrandById($params[1]);
         } else {
-            $controlerV->showCarModel(); 
+            $controlerV->showCarDetails($params[1]); 
         }
         break;
     case 'buscarMarca':
@@ -123,7 +123,7 @@ switch ($params[0]) {
         $controlerV->newCars($params[0]);
         break;
 
-    case 'todos':
+    case 'modelos':
         $controlerV->showHome();
         break;
 

@@ -8,14 +8,14 @@ class taskveiwV {
             <h2>MODELOS</h2>
             <nav class="navBar">
                 <ul>
-                    <li><a href="todos">Todos</a></li>
+                    <li><a href="modelos">Todos</a></li>
                     <li><a href="nuevos">0 Km.</a></li>
                     <li><a href="usados">Usados</a></li>
                 </ul>
             </nav>
             <h3>Seleccione la marca</h3>
             <?php
-
+                require_once 'templates/form-addCar.phtml';
             ?>
             <div>
                 <button type="submit" class="btn btn-info">Ordenar</button> <input type="text" name="buscar" id="" placeholder="Ordenar por marca">
@@ -74,7 +74,7 @@ class taskveiwV {
         <h1>Autos usados</h1>
         <nav class="navBar">
             <ul>
-                <li><a href="todos">Todos</a></li>
+                <li><a href="modelos">Todos</a></li>
                 <li><a href="nuevos">0 Km.</a></li>
                 <li><a href="usados">Usados</a></li>
             </ul>
@@ -106,7 +106,7 @@ class taskveiwV {
         <h1>Autos 0Km</h1>
         <nav class="navBar">
             <ul>
-                <li><a href="todos">Todos</a></li>
+                <li><a href="modelos">Todos</a></li>
                 <li><a href="nuevos">0 Km.</a></li>
                 <li><a href="usados">Usados</a></li>
             </ul>
