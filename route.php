@@ -1,4 +1,5 @@
 <?php
+session_start();
     require_once 'app/middlewares/guard.middleware.php';
     require_once 'app/middlewares/session.middleware.php';
     
@@ -29,7 +30,7 @@ $controlerUser = new userController();
 // eliminar/:ID       ->    deleteVehiculo($id)
 // vendido/:ID        ->      sellCar($id);
 
-session_start();
+
 // parsea la acción para separar acción real de parámetros
 $params = explode('/', $action);
 
@@ -40,7 +41,7 @@ switch ($params[0]) {
 
     // --- HOME ---
     case 'home':
-        $controlerV->showHome();
+        $controlerV->showHome($request);
         break;
 
     // --- LOGIN ---
@@ -52,30 +53,35 @@ switch ($params[0]) {
         $controlerUser->doLogin($request);
         break;
 
+    case 'salir':
+    $controlerUser->logout($request);
+    break;
+
     // --- MARCAS ---
     case 'marcas':
-        $controler->showCarBrands();
+        // $controler->showCarBrands();
+        $controler->showCarBrandsUser($request);
         break;
 
     case 'agregarMarca':
-        $controler->insert();
+        $controler->insert($request);
         break;
 
     case 'modificarMarca':
         if (isset($params[1])) {
-            $controler->edit($params[1]);
+            $controler->edit($params[1],$request);
         } else {
-            $controler->showCarBrands();
+            $controler->showCarBrandsUser($request);
         }
         break;
 
     case 'actualizarMarca':
-        $controler->update();
+        $controler->update($request);
         break;
 
     case 'eliminarMarca':
         if (isset($params[1])) {
-            $controler->removeBrand($params[1]);
+            $controler->removeBrand($params[1],$request);
         } else {
             echo "Falta el ID de la marca a eliminar.";
         }
@@ -89,13 +95,13 @@ switch ($params[0]) {
         if (isset($params[1])) {
             $controlerV->showCarBrandById($params[1]);
         } else {
-            $controlerV->showHome();
+            $controlerV->showHome($request);
         }
         break;
 
     // --- MODELOS ---
     case 'modelos':
-        $controlerV->showHome();
+        $controlerV->showHome($request);
         break;
 
     case 'agregarModelo':
@@ -138,7 +144,7 @@ switch ($params[0]) {
         break;
 
     case 'todos':
-        $controlerV->showHome();
+        $controlerV->showHome($request);
         break;
 
     // --- ERROR 404 ---

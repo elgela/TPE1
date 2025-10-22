@@ -20,6 +20,13 @@
                 <li><a href="marcas">Marcas</a></li>
                 <li><a href="modelos">Modelos</a></li>
                 <p>*MAIN*</p>
+                
+                <?php 
+                if ($user): ?>
+                    <li><a href="salir">salir</a></li>
+                <?php else: ?>
+                    <li><a href="login">iniciar sesion</a></li>
+                <?php endif; ?>
             </ul>
         </nav>
     </header>

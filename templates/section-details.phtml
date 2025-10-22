@@ -7,13 +7,19 @@
     <?php endif; ?>
     <h6><?php echo 'Modelo ' . $modelo->anio ?></h6>
     <h2><?php echo '$ ' . number_format($modelo->precio, 0, ',', '.'); ?></h2>
-    <?php if (!$modelo->vendido) { ?><a href="vendido/<?php echo $modelo->id ?>" type="button" name="comprar" class="btn btn-danger">Comprar</a> <?php }
-    if ($modelo->vendido) {
-        ?><a href="quitarModelo/<?php echo $modelo->id ?>" type="button" name="eliminar" class="btn btn-danger">Quitar</a> 
-        <h1>¡Vendido!</h1>
-    <?php
-    } else {
-    ?><a href="detallesModelo/<?php echo $modelo->id ?>" type="button" name="detalles" class="btn btn-danger">Detalles</a>
-    <?php } ?>
+    <?php 
+    if ($user) {
+        if (!$modelo->vendido) { ?>
+        <a href="vendido/<?php echo $modelo->id ?>" type="button" name="comprar" class="btn btn-danger">Comprar</a> <?php }
+        
+        if ($modelo->vendido) {
+            ?><a href="quitarModelo/<?php echo $modelo->id ?>" type="button" name="eliminar" class="btn btn-danger">Quitar</a> 
+            <h1>¡Vendido!</h1>
+        <?php
+        } else {
+        ?><a href="detallesModelo/<?php echo $modelo->id ?>" type="button" name="detalles" class="btn btn-danger">Detalles</a>
+        <?php } 
+    }   
+    ?>
     <br>
 </section>
