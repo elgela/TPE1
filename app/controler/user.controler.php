@@ -18,7 +18,6 @@ class userController {
     }
 
     public function doLogin($request) {
-        die("Entré en doLogin");
         // 1. validar que se hayan enviado los campos
         if (empty($_POST['user']) || empty($_POST['password'])) {
             return $this->view->showLogin ($request->user);
@@ -30,11 +29,8 @@ class userController {
 
         // 3. buscar el usuario en la base de datos
         $userFromDB = $this->userModel->getByUser($email);
-
         // 4. verificar que exista y que la contraseña coincida
         if ($userFromDB && password_verify($password, $userFromDB->contraseña)) {
-            var_dump($userFromDB, $_POST['password']);
-            die();
             // 5. guardar datos del usuario en la sesión
             $_SESSION['USER_ID'] = $userFromDB->id;
             $_SESSION['USER_EMAIL'] = $userFromDB->email;

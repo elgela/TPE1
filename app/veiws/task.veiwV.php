@@ -1,7 +1,7 @@
 <?php
 class taskveiwV {
 
-    function showTaksVehiculos($modelos) {
+    function showTaksVehiculos($modelos,$user) {
         require_once 'templates/header.phtml';
 ?>
         <form class="form-modelos">
@@ -19,7 +19,7 @@ class taskveiwV {
             ?>
             <div>
                 <button type="submit" class="btn btn-info">Ordenar</button> <input type="text" name="buscar" id="" placeholder="Ordenar por marca">
-            </div>
+            </div> -->
             <div class="modelos">
                 <?php foreach ($modelos as $modelo) { 
                     include 'templates/section-details.phtml';
@@ -30,6 +30,7 @@ class taskveiwV {
         require_once 'templates/footer.phtml';
     }
 
+    
     function showDetails($modelos, $id) {
         require_once 'templates/header.phtml';
     ?>

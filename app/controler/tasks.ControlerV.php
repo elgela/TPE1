@@ -17,9 +17,9 @@ class tasksControlerV {
     //     $this->veiw->showTaksVehiculosUser($modelos, $request->user);
     // }
 
-    function showHome() {
+    function showHome($request) {
         $modelos = $this->model->getCarModel();
-        $this->veiw->showTaksVehiculos($modelos);
+        $this->veiw->showTaksVehiculos($modelos , $request->user);
     }
 
     // ==== VEHÍCULOS ====

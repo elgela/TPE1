@@ -1,5 +1,8 @@
 <?php
-    // require_once './app/tasks.php';
+session_start();
+    require_once 'app/middlewares/guard.middleware.php';
+    require_once 'app/middlewares/session.middleware.php';
+    
     require_once './app/controler/tasks.Controler.php';
     require_once './app/controler/tasks.ControlerV.php';
     require_once 'app/controler/user.controler.php';
@@ -27,19 +30,19 @@ $controlerUser = new userController();
 // eliminar/:ID       ->    deleteVehiculo($id)
 // vendido/:ID        ->      sellCar($id);
 
-session_start();
+
 // parsea la acción para separar acción real de parámetros
 $params = explode('/', $action);
 
 $request = new StdClass();
-// $request = (new SessionMiddleware())->run($request);
+$request = (new SessionMiddleware())->run($request);
 
 
 switch ($params[0]) {
 
     // --- HOME ---
     case 'home':
-        $controlerV->showHome();
+        $controlerV->showHome($request);
         break;
 
     // --- LOGIN ---
@@ -51,38 +54,59 @@ switch ($params[0]) {
         $controlerUser->doLogin($request);
         break;
 
+    case 'salir':
+    $controlerUser->logout($request);
+    break;
+
     // --- MARCAS ---
     case 'marcas':
-        $controler->showCarBrands();
+        // $controler->showCarBrands();
+        $controler->showCarBrandsUser($request);
         break;
 
     case 'agregarMarca':
-        $controler->insert($request);    
+        $controler->insert($request);
         break;
 
     case 'modificarMarca':
         if (isset($params[1])) {
-            $controler->edit($params[1],$request); // $params[1] = ID de la marca
+            $controler->edit($params[1],$request);
         } else {
-            $controler->showCarBrands();
+            $controler->showCarBrandsUser($request);
         }
         break;
 
     case 'actualizarMarca':
-        $controler->update($request); // update() recibe $_POST con id, marca, nacionalidad y anio
+        $controler->update($request);
         break;
-    case 'agregarModelo':
+
+    case 'eliminarMarca':
+        if (isset($params[1])) {
+            $controler->removeBrand($params[1],$request);
+        } else {
+            echo "Falta el ID de la marca a eliminar.";
+        }
+        break;
+    case 'insertarModelo':
         $controlerV->addCarModel();
         break;
+
     case 'ver':
         if (isset($params[1])) {
             // $controlerV->showCarBrandById($params[1]);
         } else {
-            $controlerV->showCarDetails($params[1]); 
+            $controlerV->showHome($request);
         }
         break;
-    case 'buscarMarca':
-        $controler->buscar($request);
+
+    // --- MODELOS ---
+    case 'modelos':
+        $controlerV->showHome($request);
+        break;
+
+    case 'agregarModelo':
+    case 'add':
+        $controlerV->addCarModel();
         break;
 
     case 'detallesModelo':
@@ -119,8 +143,8 @@ switch ($params[0]) {
         $controlerV->newCars($params[0]);
         break;
 
-    case 'modelos':
-        $controlerV->showHome();
+    case 'todos':
+        $controlerV->showHome($request);
         break;
 
     // --- ERROR 404 ---

@@ -1,5 +1,6 @@
 <?php 
     class taskVeiw{
+        
         function showTaks($marcas) {
             require_once './templates/header.phtml';
             ?>
@@ -33,27 +34,29 @@
                         ?>
                     </tbody>
             </table>
-            <section class="form-agregar">
-                <h3>Agregar nueva marca</h3>
-                <form action="agregarMarca" method="POST">
-                    <label>Marca</label>
-                    <input type="text" name="marca" required>
+            <?php if ($user) {?>
+                <section class="form-agregar">
+                    <h3>Agregar nueva marca</h3>
+                    <form action="agregarMarca" method="POST">
+                        <label>Marca</label>
+                        <input type="text" name="marca" required>
 
-                    <label>Nacionalidad</label>
-                    <input type="text" name="nacionalidad" required>
+                        <label>Nacionalidad</label>
+                        <input type="text" name="nacionalidad" required>
+                        
+                        <label>Año de creación</label>
+                        <input type="number" name="anio" required>
+
+                        <button type="submit">Agregar</button>
+                    </form>
                     
-                    <label>Año de creación</label>
-                    <input type="number" name="anio" required>
-
-                    <button type="submit">Agregar</button>
-                </form>
-            </section>
-            <?php
+                </section>
+            <?php }
             require_once 'templates/footer.phtml';
         }
 
 
-        //todavia no funciona
+        
         function usershowTaks($marcas, $user) {
             require_once './templates/header.phtml';
             ?>
@@ -89,8 +92,25 @@
                     </tbody>
             </table>
             
-            </section>
-            <?php
+            <?php if ($user) {?>
+                <section class="form-agregar">
+                    <h3>Agregar nueva marca</h3>
+                    <form action="agregarMarca" method="POST">
+                        <label>Marca</label>
+                        <input type="text" name="marca" required>
+
+                        <label>Nacionalidad</label>
+                        <input type="text" name="nacionalidad" required>
+                        
+                        <label>Año de creación</label>
+                        <input type="number" name="anio" required>
+
+                        <button type="submit">Agregar</button>
+                    </form>
+                    
+                </section>
+            <?php }
+            
             require_once 'templates/footer.phtml';
         }
 
