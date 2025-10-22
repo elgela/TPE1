@@ -19,7 +19,7 @@ class taskveiwV {
             ?>
             <div>
                 <button type="submit" class="btn btn-info">Ordenar</button> <input type="text" name="buscar" id="" placeholder="Ordenar por marca">
-            </div> -->
+            </div>
             <div class="modelos">
                 <?php foreach ($modelos as $modelo) { 
                     include 'templates/section-details.phtml';
