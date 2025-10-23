@@ -43,4 +43,8 @@ Usuario: webadmin@gmail.com
 
 Contraseña: admin
 
+### !!! IMPORTANTE !!!!
+buenas profe espero que llegue a leer esto queria informarles que no estuvimos atentos al item de la distribucion de (A) Y (B) no nosdimos cuenta y nos distribuimos la asignacion de tarea fue distinta porque no nosdimos cuenta de los incisos (A) Y (B), porfavor tratar de comunicarce con alguno de nosotros para explicarles nuetra distribucion de tareas asi podran evaluarnos disculpe las molestias.
+* p.d : tratare de comunicarme antes para aclarar este error si ya fue informado ignore este msj saludos cordiales  Marcelo Gelato y Mariano Nesci
+
 
