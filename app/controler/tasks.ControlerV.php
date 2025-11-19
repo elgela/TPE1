@@ -33,14 +33,16 @@ class tasksControlerV {
         $this->veiw->showDetails($modelos, $id);
     }
 
-    function usedCars($id) {
+    function usedCars($request) {
         $modelos = $this->model->getCarModel();
-        $this->veiw->noNewCars($modelos, $id);
+        $this->veiw->noNewCars($modelos, $request->user);
     }
 
-    function newCars($id) {
+    function newCars($request) {
         $modelos = $this->model->getCarModel();
-        $this->veiw->yesNewCars($modelos, $id);
+        // var_dump($request->user);
+        // die();
+        $this->veiw->yesNewCars($modelos,$request->user);
     }
 
     // ==== ACCIONES ====

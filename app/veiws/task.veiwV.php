@@ -13,9 +13,6 @@ class taskveiwV {
                     <li><a href="usados">Usados</a></li>
                 </ul>
             </nav>
-            <!-- <div>
-                <button type="submit" class="btn btn-info">Ordenar</button> <input type="text" name="buscar" id="" placeholder="Ordenar por marca">
-            </div> -->
             <div class="modelos">
                 <?php foreach ($modelos as $modelo) { 
                     include 'templates/section-details.phtml';
@@ -65,7 +62,7 @@ class taskveiwV {
         require_once 'templates/footer.phtml';
     }
 
-    function noNewCars($modelos) {
+    function noNewCars($modelos,$user) {
         require_once 'templates/header.phtml';
     ?>
         <h1>Autos usados</h1>
@@ -76,10 +73,6 @@ class taskveiwV {
                 <li><a href="usados">Usados</a></li>
             </ul>
         </nav>
-        
-        <?php
-            require_once 'templates/form-marcas.phtml';
-        ?>
 
         <div class="usados">
             <?php
@@ -97,8 +90,10 @@ class taskveiwV {
         require_once 'templates/footer.phtml';
     }
 
-    function yesNewCars($modelos) {
+    function yesNewCars($modelos,$user) {
         require_once 'templates/header.phtml';
+        // var_dump($user);
+        // die();
     ?>
         <h1>Autos 0Km</h1>
         <nav class="navBar">
@@ -108,9 +103,7 @@ class taskveiwV {
                 <li><a href="usados">Usados</a></li>
             </ul>
         </nav>
-        <?php
-            require_once 'templates/form-marcas.phtml';
-        ?>
+        
         <div class="nuevos">
             <?php
             // Muestro los modelos 0km

@@ -43,18 +43,18 @@
             $this->veiw->showTaksById($marca,$request->user); 
         }
 
-        function buscar() {
+        function buscar($request) {
             if (isset($_POST['marca']) && !empty($_POST['marca'])) {
                 $nombre = trim($_POST['marca']);
 
                 $marca = $this->model->getCarBrandByName($nombre);
 
                 // $this->veiw->showTaksById($marca,$request);
-                $this->veiw->showTaksById($marca);
+                $this->veiw->showTaksById($marca,$request->user);
             } else {
                 // Si no se ingresó nada, muestro todas
                 $marcas = $this->model->getCarBrands();
-                $this->veiw->showTaks($marcas);
+                $this->veiw->usershowTaks($marcas,$request);
                 // $this->veiw->showTaks($marcas,$request);
                 // $this->veiw->showError("no se logro encontrar");
             }

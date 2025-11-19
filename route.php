@@ -1,12 +1,12 @@
 <?php
 session_start();
-    require_once 'app/middlewares/guard.middleware.php';
-    require_once 'app/middlewares/session.middleware.php';
-    
-    require_once './app/controler/tasks.Controler.php';
-    require_once './app/controler/tasks.ControlerV.php';
-    require_once 'app/controler/user.controler.php';
-    
+require_once 'app/middlewares/guard.middleware.php';
+require_once 'app/middlewares/session.middleware.php';
+
+require_once './app/controler/tasks.Controler.php';
+require_once './app/controler/tasks.ControlerV.php';
+require_once 'app/controler/user.controler.php';
+
 $action = 'home'; // acción por defecto
 if (!empty($_GET['action'])) {
     $action = $_GET['action'];
@@ -51,6 +51,7 @@ switch ($params[0]) {
         break;
 
     case 'doLogin':
+
         $controlerUser->doLogin($request);
         break;
 
@@ -63,6 +64,10 @@ switch ($params[0]) {
         // $controler->showCarBrands();
         $controler->showCarBrandsUser($request);
         break;
+
+    case 'buscarMarca':
+        $controler->buscar($request);
+    break;
 
     case 'agregarMarca':
         $controler->insert($request);
@@ -136,11 +141,11 @@ switch ($params[0]) {
         break;
 
     case 'usados':
-        $controlerV->usedCars($params[0]);
+        $controlerV->usedCars($request);
         break;
 
     case 'nuevos':
-        $controlerV->newCars($params[0]);
+        $controlerV->newCars($request);
         break;
 
     case 'todos':

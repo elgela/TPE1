@@ -29,6 +29,7 @@ class userController {
 
         // 3. buscar el usuario en la base de datos
         $userFromDB = $this->userModel->getByUser($email);
+        
         // 4. verificar que exista y que la contraseña coincida
         if ($userFromDB && password_verify($password, $userFromDB->contraseña)) {
             // 5. guardar datos del usuario en la sesión

@@ -114,7 +114,7 @@
             require_once 'templates/footer.phtml';
         }
 
-        function showTaksById($marca) {
+        function showTaksById($marca,$user) {
             require_once 'templates/header.phtml';
             ?>
             <form action="buscarMarca" method="post" class="marcas">
